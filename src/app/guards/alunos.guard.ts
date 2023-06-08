@@ -25,8 +25,8 @@ export class AlunosGuard implements CanActivateChild {
     console.log(state);
 
     if (state.url.includes('editar')) {
-      alert('Usuário sem acesso!');
-      return false;
+      //alert('Usuário sem acesso!');
+      //return false;
     }
 
     return true;

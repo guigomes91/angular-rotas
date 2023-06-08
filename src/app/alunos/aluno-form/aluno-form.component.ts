@@ -12,6 +12,7 @@ export class AlunoFormComponent implements OnInit {
 
   aluno: any;
   private subscription : Subscription = new Subscription();
+  private formMudou: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -35,4 +36,16 @@ export class AlunoFormComponent implements OnInit {
       this.subscription.unsubscribe();
     }
 
+    onInput() {
+      this.formMudou = true;
+    }
+
+    podeMudarRota() {
+
+      if (this.formMudou) {
+        confirm('Tem certeza que deseja sair dessa página?');
+      }
+
+      return true;
+    }
 }
