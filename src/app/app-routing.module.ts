@@ -3,16 +3,31 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './guards/auth.guard';
+import { CursosGuard } from './guards/cursos.guard';
+import { AlunosGuard } from './guards/alunos.guard';
 
 const appRoutes: Routes = [
-  { path: 'cursos', loadChildren: () => import("./cursos/cursos.module").then(module => module.CursosModule)},
-  { path: 'alunos', loadChildren: () => import("./alunos/alunos.module").then(module => module.AlunosModule)},
+  {
+    path: 'cursos',
+    loadChildren: () =>
+      import('./cursos/cursos.module').then((module) => module.CursosModule),
+    canActivate: [AuthGuard],
+    //canActivateChild: [CursosGuard]
+  },
+  {
+    path: 'alunos',
+    loadChildren: () =>
+      import('./alunos/alunos.module').then((module) => module.AlunosModule),
+    canActivate: [AuthGuard],
+    canActivateChild: [AlunosGuard]
+  },
   { path: 'login', component: LoginComponent },
-  { path: '', component: HomeComponent }
+  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(appRoutes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
