@@ -1,11 +1,12 @@
 import { Injectable, OnInit } from '@angular/core';
+import { Aluno } from './aluno';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlunosService implements OnInit {
 
-  private alunos: any[] = [
+  private alunos: Aluno[] = [
     {id: 1, nome: 'Aluno 01', email: 'aluno01@email.com'},
     {id: 2, nome: 'Aluno 02', email: 'aluno02@email.com'},
     {id: 3, nome: 'Aluno 03', email: 'aluno03@email.com'}
