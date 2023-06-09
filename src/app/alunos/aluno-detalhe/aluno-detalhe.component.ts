@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { AlunosService } from '../alunos.service';
+
 import { Aluno } from '../aluno';
+import { AlunosService } from '../alunos.service';
 
 @Component({
   selector: 'app-aluno-detalhe',
@@ -21,17 +22,6 @@ export class AlunoDetalheComponent implements OnInit{
     private alunosService: AlunosService) {}
 
   ngOnInit() {
-    /*this.subscription = this.route.params.subscribe(
-      (params: any) => {
-        this.id = params['id'];
-
-        this.aluno = this.alunosService.getAluno(this.id);
-
-        if (this.aluno === null) {
-          this.router.navigate(['/naoEncontrado']);
-        }
-      }
-    );*/
     console.log('ngOnInit: AlunoDetalheComponent');
 
     this.subscription = this.route.data.subscribe(
